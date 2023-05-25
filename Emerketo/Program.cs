@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Emerketo.Areas.Identity.Data;
+using Emerketo_webapp.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("EmerketoDbContextConnection") ?? throw new InvalidOperationException("Connection string 'EmerketoDbContextConnection' not found.");
 
@@ -35,5 +37,7 @@ app.MapControllerRoute(
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+
+DbInitializer.Seed(app);
 
 app.Run();
