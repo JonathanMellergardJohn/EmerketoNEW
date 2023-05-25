@@ -1,0 +1,16 @@
+﻿@model Product
+
+<section class="bg-body-secondary py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex flex-column justify-content-center align-items-start">
+                <h6>WELCOME TO BMERKETO PLANTS</h6>
+                <h1>@Model.Name</h1>
+                <a asp-controller="Product" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-danger">SHOP NOW</a>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <img class="img-fluid" src="@Model.ImgUrl" alt="Product Image">
+            </div>
+        </div>
+    </div>
+</section>

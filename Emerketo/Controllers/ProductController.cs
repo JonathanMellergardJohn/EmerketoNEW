@@ -1,7 +1,7 @@
 ﻿using Emerketo.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Emerketo_webapp.Controllers
+namespace Emerketo.Controllers
 {
     public class ProductController : Controller
     {

@@ -1,32 +1,28 @@
 ﻿using Emerketo.Models;
+using Emerketo.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace Emerketo.Controllers
 {
-	public class HomeController : Controller
-	{
-		private readonly ILogger<HomeController> _logger;
+    public class HomeController : Controller
+    {
+        private readonly IProductRepository _productRepository;
 
-		public HomeController(ILogger<HomeController> logger)
-		{
-			_logger = logger;
-		}
+        public HomeController(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
+        public IActionResult Index()
+        {
+            HomeViewModel homeViewModel = new HomeViewModel
+            {
+                HeroDisplay = _productRepository.FeaturedProducts.FirstOrDefault(),
+                NewProducts = _productRepository.NewProducts.Take(4),
+                PopularProducts = _productRepository.PopularProducts.Take(4),
+                FeaturedProducts = _productRepository.FeaturedProducts.Skip(1).Take(3),
+            };
 
-		public IActionResult Index()
-		{
-			return View();
-		}
-
-		public IActionResult Privacy()
-		{
-			return View();
-		}
-
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-		}
-	}
+            return View(homeViewModel);
+        }
+    }
 }
