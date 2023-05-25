@@ -6,7 +6,9 @@ var connectionString = builder.Configuration.GetConnectionString("EmerketoDbCont
 
 builder.Services.AddDbContext<EmerketoDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<EmerketoUser>().AddEntityFrameworkStores<EmerketoDbContext>();
+builder.Services.AddDefaultIdentity<EmerketoUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<EmerketoDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

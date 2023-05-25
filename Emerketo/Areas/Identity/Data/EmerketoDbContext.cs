@@ -1,4 +1,5 @@
 ﻿using Emerketo.Areas.Identity.Data;
+using Emerketo_webapp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,8 @@ public class EmerketoDbContext : IdentityDbContext<EmerketoUser>
         : base(options)
     {
     }
+
+    public DbSet<Product> Products { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
