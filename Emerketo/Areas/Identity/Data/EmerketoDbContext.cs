@@ -1,5 +1,5 @@
 ﻿using Emerketo.Areas.Identity.Data;
-using Emerketo_webapp.Models;
+using Emerketo.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

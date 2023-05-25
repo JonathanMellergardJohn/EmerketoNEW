@@ -1,0 +1,148 @@
+﻿@model Product
+
+<!-- IMG -->
+<section class="bg-body-secondary" style="height: 150px"></section>
+<!-- PROD DETAILS ONE -->
+<section class="bg-white">
+    <div class="container">
+        <div class="row my-3">
+            <div class="col">
+                <div class="row mb-2">
+                    <img class="img-fluid" src="@Model.ImgUrl" alt="Product Image">
+                </div>
+                <!-- <div class="row">
+                    <div class="_prod-detail-img-sm col me-2"></div>
+                    <div class="_prod-detail-img-sm col me-2"></div>
+                    <div class="_prod-detail-img-sm col me-2"></div>
+                    <div class="_prod-detail-img-sm col"></div>
+                </div> -->
+            </div>
+            <div class="col ms-3">
+                <h5 class="row">@Model.Name</h5>
+                <p class="row">@Model.ShortDescription</p>
+                <div class="row">
+                    <div class="d-flex">
+                        <span class="me-3">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span class="me-3">(@Model.Rating)</span>
+                        <span class="fst-italic">@Model.NumOfReviews Reviews</span>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <h3>$@Model.Price</h3>
+                </div>
+                <!-- ADD TO CART -->
+                <!-- <div class="row">
+                    <div class="d-flex">
+                        <div class="d-flex me-3">
+                            <div class="border py-2 px-3">-</div>
+                            <div class="border py-2 px-3">2</div>
+                            <div class="border py-2 px-3">+</div>
+                        </div>
+                        <button class="btn btn-danger">Add to Cart <i class="fa-sharp fa-solid fa-cart-plus"></i></button>
+                    </div>
+                </div> -->
+                <div class="row mt-4">
+                    <div class="d-flex">
+                        <span class="me-4">Categories:</span>
+                        @if (Model.IsNew)
+                        {
+                            <span class="px-2 me-4 border border-danger-subtle">New</span>
+                        }
+                        @if (Model.IsFeatured)
+                        {
+                            <span class="px-2 me-4 border border-danger-subtle">Featured</span>
+                        }
+                        @if (Model.IsPopular)
+                        {
+                            <span class="px-2 me-4 border border-danger-subtle">Popular</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-description-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description"
+                        aria-selected="true">
+                    DESCRIPTION
+                </button>
+
+                <button class="nav-link" id="nav-additional-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-additional" type="button" role="tab" aria-controls="nav-additional"
+                        aria-selected="true">
+                    ADDITIONAL INFO
+                </button>
+
+                <button class="nav-link" id="nav-reviews-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-reviews" type="button" role="tab" aria-controls="nav-reviews"
+                        aria-selected="true">
+                    REVIEWS
+                </button>
+
+                <button class="nav-link" id="nav-delivery-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-delivery" type="button" role="tab" aria-controls="nav-delivery"
+                        aria-selected="true">
+                    SHIPPING & DELIVERY
+                </button>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tab-content">
+
+            <div class="tab-pane fade show active p-3" id="nav-description" role="tabpanel"
+                 aria-labelledby="nav-description-tab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-8">
+                            <h3>DESCRIPTION - @Model.Name</h3>
+                            <p>@Model.LongDescription</p>
+                        </div>
+                        <div class="col-4">
+                            <img class="img-fluid" src="@Model.ImgUrl" alt="Product Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade p-3" id="nav-additional" role="tabpanel"
+                 aria-labelledby="nav-additional-tab">
+                <h2>Additional info</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus aperiam qui
+                    accusantium sapiente labore? Minima fuga omnis quos corporis veniam. Iste accusantium
+                    reprehenderit, molestiae excepturi maiores corporis autem nobis voluptate.
+                </p>
+            </div>
+
+            <div class="tab-pane fade p-3" id="nav-reviews" role="tabpanel"
+                 aria-labelledby="nav-reviews-tab">
+                <h2>Reviews</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus aperiam qui
+                    accusantium sapiente labore? Minima fuga omnis quos corporis veniam. Iste accusantium
+                    reprehenderit, molestiae excepturi maiores corporis autem nobis voluptate.
+                </p>
+            </div>
+
+            <div class="tab-pane fade p-3" id="nav-delivery" role="tabpanel"
+                 aria-labelledby="nav-delivery-tab">
+                <h2>Shipping & Delivery</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus aperiam qui
+                    accusantium sapiente labore? Minima fuga omnis quos corporis veniam. Iste accusantium
+                    reprehenderit, molestiae excepturi maiores corporis autem nobis voluptate.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

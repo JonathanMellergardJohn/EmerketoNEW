@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Emerketo.Areas.Identity.Data;
-using Emerketo_webapp.Models;
+using Emerketo.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("EmerketoDbContextConnection") ?? throw new InvalidOperationException("Connection string 'EmerketoDbContextConnection' not found.");
@@ -12,6 +12,7 @@ builder.Services.AddDefaultIdentity<EmerketoUser>()
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<EmerketoDbContext>();
 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

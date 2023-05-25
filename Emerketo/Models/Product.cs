@@ -1,4 +1,4 @@
-﻿namespace Emerketo_webapp.Models
+﻿namespace Emerketo.Models
 {
     public class Product
     {

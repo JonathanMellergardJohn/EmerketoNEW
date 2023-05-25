@@ -1,7 +1,7 @@
 ﻿using Emerketo.Areas.Identity.Data;
 using System.IO.Pipelines;
 
-namespace Emerketo_webapp.Models
+namespace Emerketo.Models
 {
     // This class is ONLY for seeding an empty database!
     public static class DbInitializer

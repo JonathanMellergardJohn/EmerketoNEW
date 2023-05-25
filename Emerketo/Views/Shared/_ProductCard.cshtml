@@ -1,0 +1,16 @@
+﻿@using Emerketo.Models
+
+@model Product
+
+<div class="col">
+    <div>
+        <img class="img-fluid" src="@Model.ImgUrl" alt="Product Image">
+        <a class="text-decoration-none text-reset" asp-controller="Product" asp-action="Details" asp-route-id="@Model.Id">
+            <h6 class="fw-bold">@Model.Name</h6>
+        </a>
+        <div class="d-flex justify-content-between">
+            <span>$@Model.Price</span>
+            <!-- <span><i class="fa-solid fa-cart-plus me-2"></i></span> -->
+        </div>
+    </div>
+</div>
