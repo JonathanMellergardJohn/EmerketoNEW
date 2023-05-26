@@ -1,0 +1,18 @@
+﻿@using Emerketo.ViewModels
+
+@model List<ProfileViewModel>
+
+<div class="container">
+	@foreach (var user in Model)
+	{
+		<div class="row">
+			<div class="col">
+				@user.Email
+			</div>
+			<div class="col">
+				@user.Role
+			</div>
+		</div>
+	}
+
+</div>

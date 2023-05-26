@@ -49,5 +49,45 @@ namespace Emerketo.Controllers
 
             return RedirectToAction("Login", "Account"); // Redirect to login if user is not authenticated
         }
+
+        public IActionResult UsersList()
+        {
+            // Check if the current user has the "Admin" role
+            if (User.IsInRole("Admin"))
+            {
+                // Retrieve all users from the database
+                var users = _userManager.Users.ToList();
+
+                // Create a list to hold user and role information
+                var userList = new List<ProfileViewModel>();
+
+                foreach (var user in users)
+                {
+                    // Retrieve the roles of each user
+                    var role = _userManager.GetRolesAsync(user).Result.FirstOrDefault();
+
+                    // Create a view model object to store user and role information
+                    var userProfile = new ProfileViewModel
+                    {
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        StreetAdress = user.StreetAdress,
+                        PostalCode = user.PostalCode,
+                        City = user.City,
+                        Role = role
+                    };
+
+                    // Add the user and role information to the list
+                    userList.Add(userProfile);
+                }
+
+                // Pass the list of users and roles to the view
+                return View(userList);
+            }
+
+            // If the current user doesn't have the "Admin" role, return an unauthorized response
+            return Unauthorized();
+        }
     }
 }
