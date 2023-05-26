@@ -1,0 +1,50 @@
+﻿@model Product
+
+<section class="bg-white">
+    <div class="container">
+        <form asp-action="AddProduct" method="post">
+
+            <div class="form-group">
+                <label asp-for="@Model.Name">Name</label>
+                <input asp-for="@Model.Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.ShortDescription">Short Description</label>
+                <input asp-for="@Model.ShortDescription" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.LongDescription">Long Description</label>
+                <textarea asp-for="@Model.LongDescription" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Price">Price</label>
+                <input asp-for="@Model.Price" class="form-control" type="number" step="0.01" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.IsPopular">Is Popular?</label>
+                <input asp-for="@Model.IsPopular" class="form-control" type="checkbox" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.IsNew">Is New?</label>
+                <input asp-for="@Model.IsNew" class="form-control" type="checkbox" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.IsFeatured">Is Featured?</label>
+                <input asp-for="@Model.IsFeatured" class="form-control" type="checkbox" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.ImgUrl">Image URL</label>
+                <input asp-for="@Model.ImgUrl" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</section>

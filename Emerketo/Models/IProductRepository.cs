@@ -7,5 +7,6 @@
         IEnumerable<Product> PopularProducts { get; }
         IEnumerable<Product> FeaturedProducts { get; }
         Product? GetProductById (int id);
+        void AddProduct (Product product);
     }
 }

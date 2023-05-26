@@ -8,4 +8,19 @@
 <div>@Model.StreetAdress</div>
 <div>@Model.PostalCode</div>
 <div>@Model.City</div>
+
+@if (User.IsInRole("Admin"))
+{
+    <div class="container">
+        <form asp-action="Profile" method="post">
+            <select class="form-select role-select" name="Role">
+                @foreach (var role in @Model.RolesInDb)
+                {
+                    <option value="@role">@role</option>
+                }
+            </select>
+            <button class="btn btn-primary save-role-btn" type="submit">Save Role</button>
+        </form>
+    </div>
+}
 <div>@Model.Role</div>

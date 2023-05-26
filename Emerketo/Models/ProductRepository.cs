@@ -44,5 +44,11 @@ namespace Emerketo.Models
         {
             return _emerketoContext.Products.FirstOrDefault(p => p.Id == id);
         }
+
+        public void AddProduct(Product product)
+        {
+            _emerketoContext.Products.Add(product);
+            _emerketoContext.SaveChanges();
+        }
     }
 }

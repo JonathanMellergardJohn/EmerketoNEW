@@ -1,17 +1,27 @@
 ﻿@using Emerketo.ViewModels
 
-@model List<ProfileViewModel>
+@model UsersListViewModel
+
+@{
+	var usersList = Model.Users;
+	var rolesList = Model.Roles;
+}
+
 
 <div class="container">
-	@foreach (var user in Model)
+	@foreach (var user in usersList)
 	{
 		<div class="row">
 			<div class="col">
-				@user.Email
+				<a id="manage" class="nav-link text-dark" 
+				asp-controller="UserAccount" 
+				asp-action="Profile"
+				asp-route-username="@user.UserName" 
+				title="Manage">@user.Email</a>
+				<div class="col">@user.Role</div>
+				
 			</div>
-			<div class="col">
-				@user.Role
-			</div>
+
 		</div>
 	}
 

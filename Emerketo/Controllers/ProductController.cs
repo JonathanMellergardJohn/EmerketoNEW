@@ -27,5 +27,19 @@ namespace Emerketo.Controllers
 
             return View(product);
         }
+        public IActionResult AddProduct()
+        {
+            Product product = new Product();
+
+
+            return View(product);
+        }
+        [HttpPost]
+        public IActionResult AddProduct(Product product)
+        {
+            _productRepository.AddProduct(product);
+
+			return RedirectToAction("Index", "Home");
+		}
     }
 }
