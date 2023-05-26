@@ -13,6 +13,8 @@ builder.Services.AddDefaultIdentity<EmerketoUser>()
     .AddEntityFrameworkStores<EmerketoDbContext>();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IQueryRepository, QueryRepository>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

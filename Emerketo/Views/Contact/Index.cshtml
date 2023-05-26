@@ -1,6 +1,8 @@
-﻿<section class="bg-white">
+﻿@model Query
+
+<section class="bg-white">
     <div class="container">
-        <form action="">
+        <form asp-action="SubmitQuery" method="post">
 
             <div class="row">
                 <p>Write something</p>
@@ -8,30 +10,30 @@
 
             <div class="row">
                 <div class="col">
-                    <label for="contact-form-name" class="form-label">Your Name*</label>
-                    <input type="text" class="form-control" id="contact-form-name">
+                    <label asp-for="@Model.Name" class="form-label">Your Name*</label>
+                    <input asp-for="@Model.Name" type="text" class="form-control" id="contact-form-name" />
                 </div>
                 <div class="col">
-                    <label for="contact-form-email" class="form-label">Your Email*</label>
-                    <input type="text" class="form-control" id="contact-form-email">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <label for="contact-form-phone" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="contact-form-phone">
-                </div>
-                <div class="col">
-                    <label for="contact-form-company" class="form-label">Company (optional)</label>
-                    <input type="text" class="form-control" id="contact-form-company">
+                    <label asp-for="@Model.Email" class="form-label">Your Email*</label>
+                    <input asp-for="@Model.Email" type="text" class="form-control" id="contact-form-email" />
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <label for="contact-form-query" class="form-label">Write your query!</label>
-                    <textarea type="text" class="form-control" id="contact-form-query" style="height: 140px"></textarea>
+                    <label asp-for="@Model.Phone" class="form-label">Phone Number</label>
+                    <input asp-for="@Model.Phone" type="text" class="form-control" id="contact-form-phone" />
+                </div>
+                <div class="col">
+                    <label asp-for="@Model.Company" class="form-label">Company (optional)</label>
+                    <input asp-for="@Model.Company" type="text" class="form-control" id="contact-form-company" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label asp-for="@Model.Message" class="form-label">Write your query!</label>
+                    <textarea asp-for="@Model.Message" class="form-control" id="contact-form-query" style="height: 140px"></textarea>
                 </div>
             </div>
 

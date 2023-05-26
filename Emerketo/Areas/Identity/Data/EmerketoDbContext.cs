@@ -15,6 +15,7 @@ public class EmerketoDbContext : IdentityDbContext<EmerketoUser>
     }
 
     public DbSet<Product> Products { get; set; }
+    public DbSet<Query> Querys { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
