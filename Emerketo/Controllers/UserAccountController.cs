@@ -60,7 +60,7 @@ namespace Emerketo.Controllers
         [HttpPost]
         public async Task<IActionResult> Profile(ProfileViewModel profile)
         {
-            var user = await _userManager.FindByNameAsync(profile.UserName);
+            var user = await _userManager.FindByNameAsync(profile.Email);
 
             if (user != null)
             {
@@ -128,5 +128,54 @@ namespace Emerketo.Controllers
             // If the current user doesn't have the "Admin" role, return an unauthorized response
             return Unauthorized();
         }
+        public IActionResult AddUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        
+            public async Task<IActionResult> AddUser(AddUserViewModel addUserViewModel)
+            {
+                if (ModelState.IsValid)
+                {
+                    var newUser = new EmerketoUser
+                    {
+                        UserName = addUserViewModel.User.UserName,
+                        Email = addUserViewModel.User.Email,
+                        PhoneNumber = addUserViewModel.User.PhoneNumber, 
+                        FirstName = addUserViewModel.User.FirstName,
+                        LastName= addUserViewModel.User.LastName,
+                        StreetAdress = addUserViewModel.User.StreetAdress,
+                        PostalCode = addUserViewModel.User.PostalCode,
+                        City = addUserViewModel.User.City,
+                        // Set other properties of EmerketoUser using data from addUserViewModel
+
+                    };
+
+                    // Create the user in the database
+                    var result = await _userManager.CreateAsync(newUser, addUserViewModel.Password);
+
+                    if (result.Succeeded)
+                    {
+                        // Assign the specified role to the user
+                        if (!string.IsNullOrEmpty(addUserViewModel.Role))
+                        {
+                            await _userManager.AddToRoleAsync(newUser, addUserViewModel.Role);
+                        }
+
+                        // Redirect to a success page or perform other actions
+                        return RedirectToAction("UserAdded");
+                    }
+
+                    // If there are any errors during user creation, add them to ModelState
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                }
+
+                // If the model is invalid or user creation fails, return the view with validation errors
+                return View(addUserViewModel);
+            }
     }
 }

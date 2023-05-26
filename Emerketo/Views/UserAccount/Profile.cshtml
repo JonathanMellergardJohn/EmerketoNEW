@@ -2,25 +2,39 @@
 
 @model ProfileViewModel
 
-<div>@Model.FirstName</div>
-<div>@Model.LastName</div>
-<div>@Model.Email</div>
-<div>@Model.StreetAdress</div>
-<div>@Model.PostalCode</div>
-<div>@Model.City</div>
+<form asp-action="Profile" method="post" role="form">
+    <div>
+        <label>First Name:</label>
+        <input class="form-control" name="FirstName" value="@Model.FirstName" />
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input class="form-control" name="LastName" value="@Model.LastName" />
+    </div>
+    <div>
+        <label>Email:</label>
+        <input class="form-control" name="Email" value="@Model.Email" />
+    </div>
 
-@if (User.IsInRole("Admin"))
-{
-    <div class="container">
-        <form asp-action="Profile" method="post">
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="container">
+            <label>Role:</label>
             <select class="form-select role-select" name="Role">
-                @foreach (var role in @Model.RolesInDb)
+                @foreach (var role in Model.RolesInDb)
                 {
-                    <option value="@role">@role</option>
+                    if (role == Model.Role)
+                    {
+                        <option value="@role" selected>@role</option>
+                    }
+                    else
+                    {
+                        <option value="@role">@role</option>
+                    }                   
                 }
             </select>
-            <button class="btn btn-primary save-role-btn" type="submit">Save Role</button>
-        </form>
-    </div>
-}
-<div>@Model.Role</div>
+        </div>
+    }
+    
+    <input type="submit" class="btn btn-secondary" value="Save changes" />
+</form>
