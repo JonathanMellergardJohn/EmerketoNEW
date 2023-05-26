@@ -26,6 +26,10 @@ namespace Emerketo_webapp.Controllers
 
 			return RedirectToAction("Success");
 		}
+		public IActionResult Success() 
+		{ 
+			return View();
+		}
 	}
 
 	
