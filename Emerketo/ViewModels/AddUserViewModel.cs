@@ -5,6 +5,7 @@ namespace Emerketo.ViewModels
     public class AddUserViewModel
     {
         public EmerketoUser User { get; set; } = new EmerketoUser();
+        public string Password { get; set; } = null!;
         public string UserRole { get; set; } = string.Empty;
         public List<string> RolesInDb { get; set; } = new List<string>();
     }

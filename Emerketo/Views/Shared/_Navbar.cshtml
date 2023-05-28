@@ -1,22 +1,16 @@
 ﻿<section class="bg-white">
     <div class="container">
-        <div class="row">
-            <nav class="nav col">
+        <div class="d-flex justify-content-between">
+            <nav class="nav">
                 <a class="nav-link fw-bolder fs-4 text-dark" asp-controller="Home" asp-action="Index">bmerketo</a>
             </nav>
-            <nav class="nav col d-flex justify-content-end align-items-center">
+            <nav class="nav">
                 <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
                 <a asp-controller="Product" asp-action="AllProducts" class="nav-link text-dark">Products</a>
                 <a class="nav-link text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
-                <!-- <a class="nav-link text-dark" href="#"><i class="fa-solid fa-magnifying-glass"></i></a> -->
-                <!-- <a class="nav-link text-dark" href="#"><i class="fa-solid fa-cart-shopping"></i></a> -->
                 
-            </nav> 
-            <nav class="col">
                 <partial name="_LoginPartial" />
-            </nav>
-            
-        </div>
-        
+            </nav>           
+        </div>        
     </div>
 </section>

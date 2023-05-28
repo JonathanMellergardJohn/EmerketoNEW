@@ -2,11 +2,12 @@
 @model IEnumerable<Product>
 
 <h3 class="m-5">@ViewBag.Display</h3>
-
-<div class="row row-cols-1 g-4">
-    @foreach(var product in Model)
-    {        
-        <partial name="_ProductCard" model="product" />
-    }
+<div class="container">
+    <div class="row g-4">
+        @foreach(var product in Model)
+        {        
+            <partial name="_ProductCard" model="product" />
+        }
+    </div>
 </div>
 

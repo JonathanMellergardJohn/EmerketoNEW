@@ -1,0 +1,58 @@
+﻿@using Emerketo.ViewModels
+
+@model AddUserViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="registerForm"  method="post">
+            <h2>Create a new account.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.User.UserName" class="form-control" autocomplete="first name" aria-required="true" placeholder="first name" />
+                <label asp-for="@Model.User.UserName">User Name</label>
+                <span asp-validation-for="@Model.User.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.User.FirstName" class="form-control" autocomplete="first name" aria-required="true" placeholder="first name" />
+                <label asp-for="@Model.User.FirstName">First Name</label>
+                <span asp-validation-for="@Model.User.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.User.LastName" class="form-control" autocomplete="last name" aria-required="true" placeholder="last name" />
+                <label asp-for="@Model.User.LastName">Last Name</label>
+                <span asp-validation-for="@Model.User.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.User.StreetAdress" class="form-control" autocomplete="Street Address" aria-required="true" placeholder="Street Address" />
+                <label asp-for="@Model.User.StreetAdress">Street Address</label>
+                <span asp-validation-for="@Model.User.StreetAdress" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.User.PostalCode" class="form-control" autocomplete="Postal Code" aria-required="true" placeholder="PostalCode" />
+                <label asp-for="@Model.User.PostalCode">PostalCode</label>
+                <span asp-validation-for="@Model.User.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.User.City" class="form-control" autocomplete="City" aria-required="true" placeholder="City" />
+                <label asp-for="@Model.User.City">City</label>
+                <span asp-validation-for="@Model.User.City" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.User.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="@Model.User.Email">Email</label>
+                <span asp-validation-for="@Model.User.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="@Model.Password">Password</label>
+                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="@Model.UserRole" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="@Model.UserRole">Confirm Password</label>
+                <span asp-validation-for="@Model.UserRole" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </form>
+    </div>

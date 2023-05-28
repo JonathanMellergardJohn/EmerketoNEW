@@ -2,25 +2,50 @@
 
 @model ProfileViewModel
 
-<form asp-action="Profile" method="post" role="form">
-    <div>
-        <label>First Name:</label>
-        <input class="form-control" name="FirstName" value="@Model.FirstName" />
+@if (User.IsInRole("Admin"))
+{
+    <div class="container">
+        <nav class="nav">
+            <a class="nav-link text-dark" asp-controller="UserAccount" asp-action="UsersList">View All Users</a>
+            <a asp-controller="UserAccount" asp-action="AddUser" class="nav-link text-dark">Add User</a>
+            <a class="nav-link text-dark" asp-controller="Product" asp-action="AddProduct">Add Product</a>
+        </nav>
     </div>
-    <div>
-        <label>Last Name:</label>
-        <input class="form-control" name="LastName" value="@Model.LastName" />
+}
+
+<div class="container">
+    <h3 class="row">User Profile:</h3>
+    <div class="row">
+        <div class="col">Email:</div>
+        <div class="col">@Model.Email</div>
     </div>
-    <div>
-        <label>Email:</label>
-        <input class="form-control" name="Email" value="@Model.Email" />
+    <div class="row">
+        <div class="col">First Name:</div>
+        <div class="col">@Model.FirstName</div>
+    </div>
+    <div class="row">
+        <div class="col">Last Name:</div>
+        <div class="col">@Model.LastName</div>
+    </div>
+    <div class="row">
+        <div class="col">Street Address:</div>
+        <div class="col">@Model.StreetAdress</div>
+    </div>
+    <div class="row">
+        <div class="col">Postal Code:</div>
+        <div class="col">@Model.PostalCode</div>
+    </div>
+    <div class="row">
+        <div class="col">City:</div>
+        <div class="col">@Model.City</div>
     </div>
 
     @if (User.IsInRole("Admin"))
-    {
-        <div class="container">
-            <label>Role:</label>
-            <select class="form-select role-select" name="Role">
+    {        
+        <div class="row">
+            <form asp-action="Profile" method="post" role="form">
+            <label class="col">Role:</label>
+            <select class="form-select role-select col" name="Role">
                 @foreach (var role in Model.RolesInDb)
                 {
                     if (role == Model.Role)
@@ -30,11 +55,18 @@
                     else
                     {
                         <option value="@role">@role</option>
-                    }                   
+                    }
                 }
             </select>
+            <input type="submit" class="btn btn-secondary col" value="Save changes" />  
+            </form>
+        </div>
+    }    
+    else
+    {
+        <div class="row">
+            <div class="col">Role:</div>
+            <div class="col">@Model.Role</div>
         </div>
     }
-    
-    <input type="submit" class="btn btn-secondary" value="Save changes" />
-</form>
+</div>
